@@ -16,7 +16,7 @@
 # Setup
 * Download the theme
 * Extract the downloaded theme and place 'three-column' folder inside your themes folder of your application.
-* Import the content types in your Stack from three-column/content-types/
+* Import the content types in your Stack from /themes/three-column/content-types/
 * Activate this theme in config/all.js as shown below
 
     ```
