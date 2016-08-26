@@ -1,0 +1,19 @@
+<div id="sidebar-narrow" style="width:100%;max-width:160px;float:left;">
+    <div class="sidebar section" id="sidebar-lab">
+        <div class="widget Label" data-version="1" id="Label17">
+            <h2>
+                <span>Categories</span>
+            </h2>
+            <div class="widget-content list-label-widget-content">
+                <ul>
+                    {% for category in categories %}
+                    <li>
+                        {{category.title}}
+                    </li>
+                    {% endfor %}
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>

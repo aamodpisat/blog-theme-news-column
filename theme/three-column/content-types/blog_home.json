@@ -1,0 +1,77 @@
+{
+  "title": "Blog Home",
+  "uid": "blog_home",
+  "inbuilt_class": false,
+  "schema": [
+    {
+      "display_name": "Title",
+      "uid": "title",
+      "data_type": "text",
+      "field_metadata": {
+        "_default": true
+      },
+      "unique": "global",
+      "mandatory": true,
+      "multiple": false
+    },
+    {
+      "display_name": "URL",
+      "uid": "url",
+      "data_type": "text",
+      "field_metadata": {
+        "_default": true,
+        "instruction": ""
+      },
+      "unique": null,
+      "mandatory": true,
+      "multiple": false
+    },
+    {
+      "data_type": "reference",
+      "display_name": "Featured Posts",
+      "reference_to": "posts",
+      "field_metadata": {
+        "ref_multiple": true
+      },
+      "uid": "featured_posts",
+      "unique": null,
+      "mandatory": false,
+      "multiple": false
+    },
+    {
+      "data_type": "reference",
+      "display_name": "Categories",
+      "reference_to": "categories",
+      "field_metadata": {
+        "ref_multiple": true
+      },
+      "uid": "categories",
+      "unique": null,
+      "mandatory": false,
+      "multiple": false
+    }
+  ],
+  "maintain_revisions": true,
+  "options": {
+    "is_page": true,
+    "title": "title",
+    "sub_title": [],
+    "_version": 4
+  },
+  "abilities": {
+    "delete_all_objects": true,
+    "delete_object": true,
+    "update_object": true,
+    "create_object": true,
+    "get_all_objects": true,
+    "get_one_object": true
+  },
+  "DEFAULT_ACL": {
+    "others": {
+      "read": false,
+      "create": false
+    }
+  },
+  "singleton": true,
+  "last_activity": []
+}

@@ -1,0 +1,70 @@
+
+<div class="main section" id="main">
+    <div class="widget Blog" data-version="1" id="Blog1">
+        <div class="breadcrumb"></div>
+        <div class="blog-posts hfeed">
+            <div class="date-outer">
+                <div class="date-posts">
+
+                    <div class="post-outer">
+                        {% for post in posts %}
+                        <article class="post hentry">
+                           <a href="{{post.url}}">
+                               {% if post.featured_image %}
+                               <div class="img-thumbnail">
+                                   <span class="rollover"></span>
+                                   <img src="{{getAssetUrl(post.featured_image)}}" width="300" height="190" title="{{post.title}}">
+                               </div>
+                               {% endif %}
+                           </a>
+                            <h2 class="post-title entry-title">
+                                <span>
+                                    <a href="{{post.url}}">{{post.title}}</a>
+                                </span>
+                            </h2>
+                            <div class="post-info">
+									<span class="author-info">
+										<i class="fa fa-user"></i>
+										<span class="vcard">
+											<span class="fn" itemprop="author" itemscope="itemscope" >
+												<a class="g-profile" href="/blog/author/{{post.author[0].title}}" rel="author" title="author profile" data-gapiscan="true" data-onload="true" data-gapiattached="true">
+                                                    <span itemprop="name">{{post.author[0].title}}</span>
+                                                </a>
+											</span>
+										</span>
+									</span>
+									<span class="time-info">
+										<i class="fa fa-calendar"></i>
+										<a class="timestamp-link" href="{{post.url}}" rel="bookmark" title="permanent link">
+                                            <abbr class="published updated" itemprop="datePublished" title="{{entry.created_at}}">
+                                                {{date(post.created_at, 'DD, MMMM, YYYY')}}
+                                            </abbr>
+                                        </a>
+									</span>
+                                {% if post.tags.length %}
+									<span class="label-info">
+										<i class="fa fa-tags"></i>
+										{% for tag in post.tags %}
+										{{tag.title}} {% if not loop.last %},{% endif %}
+										{% endfor %}
+									</span>
+                                {% endif %}
+                            </div>
+                            <div class="post-header">
+                                <div class="post-header-line-1"></div>
+                            </div>
+                            <div class="post-body entry-content" id="post-body-8718934671768034761" itemprop="description articleBody">
+                                <div>
+                                    {{post.full_description | truncate(40)}}
+                                </div>
+                                <a class="readmore" href="{{post.url}}">Read More<i class="fa fa-caret-right"></i></a>
+                                <div style="clear: both;"></div>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

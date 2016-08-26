@@ -1,0 +1,79 @@
+{# If you have a "Content Type" for footer in Built.io Contentstack then use get() view helper to retrieve footer entry. #}
+{# e.g. set footer = get("footer_content_type_id") #}
+{# And then render footer values using the {{footer.field_name}} #}
+
+<aside id="bottombar">
+    {% if posts.length %}
+    <div class="left section section" id="left">
+        <div class="widget PopularPosts" data-version="1" id="PopularPosts2">
+        <h2><span>Popular Posts</span></h2>
+        <div class="widget-content popular-posts">
+            <ul>
+                {% for post in posts %}
+                <li>
+                    <div class="item-content">
+                        <div class="item-thumbnail">
+                            <a href="{{post.url}}" target="_blank">
+                                {% if post.featured_image %}
+                                <img alt="{{post.title}}" border="0" height="72" src="{{getAssetUrl(post.featured_image)}}" width="72">
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="item-title"><a href="{{post.url}}">{{post.title}}</a></div>
+                        <div class="item-snippet">{{post.full_description | truncate(10)}}</div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    </div>
+    {% endif %}
+    {% if categories %}
+    <div class="center1 section section" id="center-right">
+        <div class="widget PopularPosts" data-version="1" id="PopularPosts3">
+        <h2><span>Categories</span></h2>
+        <div class="widget-content popular-posts">
+            <ul>
+                {% for category in categories %}
+                <li>
+                    <div class="item-content">
+                        <div class="item-title"><a href="/blog/category/{{category.title}}">{{category.title}}</a></div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    </div>
+    {% endif %}
+    {% if authors %}
+    <div class="right section tagcloud1 section" id="right">
+        <div class="widget HTML" data-version="1" id="HTML9">
+            <h2 class="title"><span>Authors</span></h2>
+            <div class="widget-content">
+              <ul class="helploggercomments">
+                  {% for author in authors %}
+                  <li>
+                      <div class="avatarImage avatarRound">
+                      </div>
+                      <a href="/blog/author/{{author.title}}">{{author.title}}</a>
+                  </li>
+                  {% endfor %}
+              </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    {% endif %}
+</aside>
+
+<footer id="footer-wrapper">
+    <div class="footer-left" id="copyr" itemscope="itemscope">
+        Published with <a href="https://contentstack.built.io/#!/login" target="_blank" id="mycontent" title="Free Blogger Templates">Built.io Contentstack</a>
+    </div>
+</footer>

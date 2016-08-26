@@ -1,0 +1,36 @@
+{% set header = get("blog_home") %}
+
+<header id="header-wrapper">
+<div class="header section section" id="header">
+    <div class="widget Header" data-version="1" id="Header1">
+        <div id="header-inner">
+            <a href="/blog" itemprop="url" style="display: block">
+                <h1>{{header.title}}</h1>
+            </a>
+        </div>
+    </div>
+</div>
+</header>
+
+<nav id="main-nav">
+    <div class="main-menu">
+        <ul class="main-menu">
+            <li itemprop="name">
+                <a class="active" href="/blog" itemprop="url">Home</a>
+            </li>
+            <li>
+                <a href="#">About Us</a>
+            </li>
+            <li>
+                <a href="#">Contact Us</a>
+            </li>
+        </ul>
+        <div id="searchformfix">
+            <form action="/search" id="searchform">
+                <input name="q" onblur="if (this.value == &quot;&quot;) {this.value = &quot;Search...&quot;;}" onfocus="if (this.value == &quot;Search...&quot;) {this.value = &quot;&quot;;}" type="text" value="Search...">
+                <input type="submit" value="">
+            </form>
+        </div>
+    </div>
+</nav>
+

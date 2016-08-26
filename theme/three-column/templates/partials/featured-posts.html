@@ -1,0 +1,19 @@
+{% set home = get('blog_home') %}
+{% set featuredPosts = home.featured_posts %}
+<div class="blog_featured_posts">
+    {% for post in featuredPosts %}
+    {% set image = getAssetUrl(post.featured_image) %}
+    <div class="blog_featured_post {% if loop.index == 1 %}first{% endif %}{%if loop.index == 2 %}second {%endif%}{%if loop.index == 3 %}third{% endif %}{%if loop.index == 4 %}fourth{% endif %}{%if loop.index == 5 %}fifth{% endif %} "
+            style="background-image: url({{image}})">
+        <a href="{{post.url}}">
+            <div class="blog_contents">
+                    <span>
+                        {{post.categories[0].title}}
+                    </span>
+                <h3>{{post.title}}</h3>
+            </div>
+            <div class="post-image"></div>
+        </a>
+    </div>
+    {% endfor %}
+</div>

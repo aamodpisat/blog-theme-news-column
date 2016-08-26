@@ -1,0 +1,69 @@
+{% extends "layouts/default.html" %}
+{% block content %}
+{% for key, entries in categoriesObj %}
+
+<div class="{% if loop.first or loop.last %}stylebox1{% else %}stylebox{% endif %} section" id="stylebox-{{loop.index}}">
+    <div class="widget HTML" data-version=1 id="HTML{{loop.index}}">
+        <div class="recent-post-title">
+            <h2>
+                <span>
+                    <a href="/blog/category/{{key}}">{{key}}</a>
+                </span>
+            </h2>
+        </div>
+        <div class="widget-content">
+            <div class="news_pictures">
+                <ul class="news_pictures_list">
+                    <ul class="{% if loop.first or loop.last %}xpose_thumbs1{%else %}xpose_thumbs{% endif %}">
+                        <li>
+                            {% set data = entries[0] %}
+                            <a href="{{data.url}}">
+                                <div class="xpose_thumb">
+                                    <img src="{{getAssetUrl(data.featured_image)}}" width="310" height="320"
+                                         alt="{{data.title}}">
+                                </div>
+                            </a>
+                            <div class="large-thumb">
+                                <span class="xpose_title">
+                                    <a href="{{data.url}}">{{data.title}}</a>
+                                </span>
+                                <span class="xpose_meta">
+                                    <span class="xpose_meta_date">
+                                        {{date(data.created_at , 'Do/MM/YYYY')}}
+                                    </span>
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="{% if loop.first or loop.last %}xpose_thumbs22{%else %}xpose_thumbs2{% endif %}">
+                        {% for entry in entries %}
+                        {% if not loop.first %}
+                            <a href="{{entry.url}}">
+                                <div class="xpose_thumb2">
+                                    <img src="{{getAssetUrl(entry.featured_image)}}" width="310" height="320"
+                                         alt="{{entry.title}}">
+                                </div>
+                            </a>
+                            <li>
+                                <span class="xpose_title xpose_title2">
+                                    <a href="{{entry.url}}" target="_top">{{entry.title}}</a>
+                                </span>
+                                <span class="xpose_meta xpose_meta2">
+                                    <span class="xpose_meta_date xpose_meta_date2">
+                                        {{date(entry.created_at, 'Do/MM/YYYY')}}
+                                    </span>
+                                </span>
+                            </li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+
+{% endblock %}
