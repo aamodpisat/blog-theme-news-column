@@ -3,8 +3,8 @@
  */
 var async = require('async');
 var Hooks = {};
-Hooks.serverExtends = function(app) {
-    app.extends().use('/blog', function(req, res, next) {
+Hooks.serverExtends = function(app, Blog) {
+    app.extends().use(Blog.Routes.home, function(req, res, next) {
         var data = req.contentstack.get('entry');
         if(data.url == '/blog'){
            var categories = data.categories;
