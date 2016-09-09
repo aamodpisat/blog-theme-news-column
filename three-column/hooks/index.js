@@ -6,8 +6,8 @@ var Hooks = {};
 Hooks.serverExtends = function(app, Blog) {
     app.extends().use(Blog.Routes.home, function(req, res, next) {
         var data = req.contentstack.get('entry');
-        if(data.url == '/blog'){
-           var categories = data.categories;
+        if(data && data.url == Blog.Routes.home) {
+            var categories = data.categories;
             var jsonFunction = {};
             for (var i = 0; i < categories.length; i++) {
                 (function(category){
@@ -23,10 +23,9 @@ Hooks.serverExtends = function(app, Blog) {
                 req.getViewContext().set('categoriesObj', results);
                 next();
             });
-        }else{
+        } else {
             next();
         }
-
     }, function(req, res, next) {
         Blog.getAuthors()
             .spread(function (authors){
